@@ -1,0 +1,50 @@
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu__header" appReveal>
+      <span class="section-label">Lo que más nos piden</span>
+      <h2 class="menu__title">Nuestro menú</h2>
+      <p class="menu__subtitle">
+        Ingredientes de temporada, recetas con alma. Todo preparado
+        esa mañana para ti.
+      </p>
+    </div>
+
+    <div class="menu__tabs" appReveal>
+      @for (cat of categories; track cat.key) {
+        <button
+          class="menu__tab"
+          [class.active]="activeCategory() === cat.key"
+          (click)="setCategory(cat.key)"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <div class="menu__grid">
+      @for (item of currentItems; track item.id; let i = $index) {
+        <article
+          class="menu__card"
+          appReveal
+          [class.reveal-delay-1]="i === 0"
+          [class.reveal-delay-2]="i === 1"
+          [class.reveal-delay-3]="i === 2"
+        >
+          <div class="menu__card-img">
+            <img [src]="item.image" [alt]="item.name" loading="lazy" />
+            @if (item.tag) {
+              <span class="menu__card-tag">{{ item.tag }}</span>
+            }
+          </div>
+          <div class="menu__card-body">
+            <div class="menu__card-top">
+              <h3>{{ item.name }}</h3>
+              <span class="menu__card-price">{{ item.price }}</span>
+            </div>
+            <p>{{ item.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,139 @@
+.menu {
+  padding-block: var(--section-pad);
+  background: var(--bg);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 32rem;
+    margin-inline: auto;
+    line-height: 1.7;
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  &__tab {
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    border: 1.5px solid #E2D8CE;
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    &.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: 1.5rem;
+  }
+
+  &__card {
+    background: var(--panel);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #EDE6DC;
+    transition: box-shadow 0.25s, transform 0.25s;
+
+    &:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+    }
+  }
+
+  &__card-img {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-out);
+    }
+  }
+
+  &__card:hover &__card-img img {
+    transform: scale(1.04);
+  }
+
+  &__card-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+  }
+
+  &__card-body {
+    padding: 1.25rem;
+
+    p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+  }
+
+  &__card-price {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}

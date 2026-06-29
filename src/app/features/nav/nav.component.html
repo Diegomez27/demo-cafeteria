@@ -1,0 +1,27 @@
+<header class="nav" [class.scrolled]="scrolled()">
+  <div class="nav__inner container">
+    <a href="#" class="nav__logo" (click)="closeMenu()">
+      <span class="nav__logo-mark">M</span>
+      <span class="nav__logo-name">Matina</span>
+    </a>
+
+    <nav class="nav__links" [class.open]="menuOpen()" aria-label="Navegación principal">
+      <a href="#menu" (click)="closeMenu()">Menú</a>
+      <a href="#about" (click)="closeMenu()">Nosotros</a>
+      <a href="#location" (click)="closeMenu()">Ubicación</a>
+      <a href="#location" class="nav__cta" (click)="closeMenu()">Reservar</a>
+    </nav>
+
+    <button
+      class="nav__burger"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

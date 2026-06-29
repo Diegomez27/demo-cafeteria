@@ -1,0 +1,127 @@
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 100;
+  padding-block: 1.25rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+
+  &.scrolled {
+    background: rgba(250, 246, 240, 0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    padding-block: 0.9rem;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  &__logo-mark {
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__logo-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+
+      &:hover { color: var(--ink); }
+    }
+  }
+
+  &__cta {
+    padding: 0.5rem 1.25rem;
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-radius: 2rem;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+
+    &:hover {
+      background: var(--accent-dark) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s var(--ease-out), opacity 0.3s;
+    }
+
+    &.open {
+      span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    &__burger { display: flex; }
+
+    &__links {
+      position: fixed;
+      inset: 0;
+      top: 4rem;
+      background: var(--bg);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      transform: translateX(100%);
+      transition: transform 0.35s var(--ease-out);
+      pointer-events: none;
+
+      a { font-size: 1.25rem; }
+
+      &.open {
+        transform: none;
+        pointer-events: all;
+      }
+    }
+  }
+}
