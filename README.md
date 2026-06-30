@@ -1,59 +1,80 @@
-# DemoCafe
+# ☕ Café Raíces — Landing de Cafetería
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+Demo de **presencia web** del [portafolio de Diego Gómez](https://github.com/Diegomez27/portfolio-web).
+Landing page de una cafetería de especialidad ficticia, mobile-first, con identidad visual propia
+y sin dependencias de UI.
 
-## Development server
+> Parte del catálogo de demos del portafolio. El objetivo es mostrar capacidad de diseño y
+> frontend moderno: cada demo se ve y se siente como un producto terminado, no como un ejercicio.
 
-To start a local development server, run:
+🔗 **Demo en vivo:** _(pendiente de deploy en Vercel)_
+
+---
+
+## Qué demuestra
+
+- Diseño **mobile-first** con identidad visual cálida y artesanal, distinta al portafolio principal.
+- **Angular moderno**: standalone components, Signals y control flow (`@if` / `@for`).
+- CSS propio con **variables de tema**, sin librerías de UI (Angular Material, PrimeNG, etc.).
+- Interacciones sin recargar: **menú filtrable por categoría** y formulario con validación reactiva.
+- Animaciones de entrada con una **directiva `appReveal`** propia (IntersectionObserver).
+
+---
+
+## Secciones
+
+| Sección | Descripción |
+|---|---|
+| **Hero** | Imagen de fondo a pantalla completa y headline de impacto. |
+| **Menú** | Lista tipo restaurante con filtros por categoría (datos desde JSON local). |
+| **Nosotros** | Historia del lugar con estadísticas. |
+| **Galería** | Grid CSS con tamaños variados (sin librería). |
+| **Reservación** | Formulario solo-frontend con validación y estado de éxito. |
+| **Footer** | Ubicación, horarios y redes. |
+
+---
+## Stack
+
+- **Framework:** Angular 21 (standalone + Signals)
+- **Lenguaje:** TypeScript
+- **Estilos:** SCSS con variables CSS personalizadas
+- **Tipografía:** Young Serif (títulos) · Figtree (cuerpo) — Google Fonts
+- **Imágenes:** Unsplash
+- **Datos:** JSON local (sin backend)
+- **Deploy:** Vercel
+
+---
+
+## Desarrollo local
 
 ```bash
-ng serve
+npm install
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abrir `http://localhost:4200/`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Build de producción
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Genera los artefactos en `dist/demo-cafe/browser/`.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## ▲ Deploy en Vercel
 
-To build the project run:
+El repositorio incluye [`vercel.json`](./vercel.json) con la configuración lista:
 
-```bash
-ng build
-```
+- **Framework:** Angular
+- **Build command:** `npm run build`
+- **Output directory:** `dist/demo-cafe/browser`
+- **Rewrites:** todas las rutas a `index.html` (SPA)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Para desplegar, importar el proyecto en Vercel apuntando el **Root Directory** a esta carpeta
+(`Demos/landings/demo-cafe`). Vercel detecta el `vercel.json` automáticamente; no requiere
+variables de entorno.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
