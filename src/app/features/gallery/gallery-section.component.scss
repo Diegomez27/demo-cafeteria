@@ -1,14 +1,13 @@
 .gallery {
   padding: 5rem 0 0;
-  background: var(--color-brown-900);
+  background: var(--color-surface);
 
-  .section-title,
-  .section-subtitle {
-    color: var(--color-cream);
+  .section-title {
+    color: var(--color-ink);
   }
 
   .section-subtitle {
-    color: rgba(250, 243, 224, 0.6);
+    color: var(--color-ink-muted);
   }
 }
 
@@ -55,14 +54,14 @@
 .gallery__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(44, 24, 16, 0);
+  background: rgba(0, 0, 0, 0);
   display: flex;
   align-items: flex-end;
   padding: 1rem;
   transition: background 0.35s ease;
 
   span {
-    color: var(--color-white);
+    color: var(--color-ink);
     font-size: 0.8125rem;
     font-weight: 500;
     opacity: 0;
@@ -71,7 +70,7 @@
   }
 
   .gallery__item:hover & {
-    background: rgba(44, 24, 16, 0.45);
+    background: rgba(0, 0, 0, 0.5);
 
     span {
       opacity: 1;

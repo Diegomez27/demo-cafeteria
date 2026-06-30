@@ -1,6 +1,6 @@
 .about {
   padding: 5rem 0 6rem;
-  background: var(--color-cream);
+  background: var(--color-bg);
 }
 
 .about__grid {
@@ -21,22 +21,21 @@
 
 .about__image {
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   object-fit: cover;
   aspect-ratio: 4/3;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
 }
 
 .about__image-badge {
   position: absolute;
   bottom: -1.25rem;
   right: -1rem;
-  background: var(--color-olive);
-  color: var(--color-white);
+  background: var(--color-amber);
+  color: var(--color-bg);
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);
   text-align: center;
-  box-shadow: var(--shadow-md);
 
   @media (max-width: 899px) {
     right: 1rem;
@@ -45,31 +44,29 @@
 
 .about__badge-number {
   display: block;
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 900;
   line-height: 1;
 }
 
 .about__badge-text {
-  font-size: 0.75rem;
-  font-weight: 500;
-  opacity: 0.85;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 .about__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-olive);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-amber);
   margin-bottom: 0.75rem;
 }
 
 .about__text {
-  color: var(--color-brown-700);
+  color: var(--color-ink-muted);
   line-height: 1.75;
   margin-bottom: 1rem;
 
@@ -83,7 +80,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-cream-dark);
+  border-top: 1px solid var(--color-border);
 }
 
 .about__stat {
@@ -93,15 +90,15 @@
 }
 
 .about__stat-value {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--color-brown-900);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-ink);
   line-height: 1;
 }
 
 .about__stat-label {
   font-size: 0.8125rem;
-  color: var(--color-brown-400);
+  color: var(--color-ink-muted);
   font-weight: 500;
 }
