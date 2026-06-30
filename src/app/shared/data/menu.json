@@ -1,0 +1,133 @@
+{
+  "categories": ["Todos", "Cafés", "Bebidas frías", "Repostería", "Desayunos"],
+  "items": [
+    {
+      "id": 1,
+      "name": "Espresso",
+      "category": "Cafés",
+      "price": 45,
+      "description": "Concentrado intenso con notas achocolatadas. Café de altura, origen Chiapas.",
+      "tag": null
+    },
+    {
+      "id": 2,
+      "name": "Cappuccino",
+      "category": "Cafés",
+      "price": 65,
+      "description": "Espresso con leche vaporizada y espuma sedosa. El clásico de siempre.",
+      "tag": null
+    },
+    {
+      "id": 3,
+      "name": "Café de Olla",
+      "category": "Cafés",
+      "price": 55,
+      "description": "Canela, piloncillo y café de altura. Receta de abuela, sabor de siempre.",
+      "tag": "Popular"
+    },
+    {
+      "id": 4,
+      "name": "Latte de Vainilla",
+      "category": "Cafés",
+      "price": 72,
+      "description": "Espresso doble, leche texturizada y vainilla natural de Veracruz.",
+      "tag": null
+    },
+    {
+      "id": 5,
+      "name": "Cold Brew",
+      "category": "Bebidas frías",
+      "price": 78,
+      "description": "Infusión en frío durante 18 horas. Suave, sin acidez, con notas frutales.",
+      "tag": "Firma"
+    },
+    {
+      "id": 6,
+      "name": "Matcha Latte Frío",
+      "category": "Bebidas frías",
+      "price": 85,
+      "description": "Matcha ceremonial japonés con leche de avena y hielo.",
+      "tag": null
+    },
+    {
+      "id": 7,
+      "name": "Limonada de Menta",
+      "category": "Bebidas frías",
+      "price": 62,
+      "description": "Limón real, menta fresca, jarabe natural. Sin colorantes ni saborizantes.",
+      "tag": null
+    },
+    {
+      "id": 8,
+      "name": "Horchata Fría",
+      "category": "Bebidas frías",
+      "price": 58,
+      "description": "Arroz, canela y vainilla. La horchata de siempre, bien fría.",
+      "tag": "Popular"
+    },
+    {
+      "id": 9,
+      "name": "Croissant de Almendra",
+      "category": "Repostería",
+      "price": 58,
+      "description": "Horneado cada mañana, relleno de crema de almendra tostada.",
+      "tag": "Popular"
+    },
+    {
+      "id": 10,
+      "name": "Pay de Queso",
+      "category": "Repostería",
+      "price": 68,
+      "description": "Cremoso, con base de galleta y coulis de frutos rojos del bosque.",
+      "tag": null
+    },
+    {
+      "id": 11,
+      "name": "Brownie Artesanal",
+      "category": "Repostería",
+      "price": 52,
+      "description": "Chocolate amargo 70%, nueces, centro fundido. Sin harina de trigo.",
+      "tag": "Firma"
+    },
+    {
+      "id": 12,
+      "name": "Muffin de Arándano",
+      "category": "Repostería",
+      "price": 48,
+      "description": "Esponjoso, con arándanos frescos y cubierta crujiente de azúcar.",
+      "tag": null
+    },
+    {
+      "id": 13,
+      "name": "Desayuno Completo",
+      "category": "Desayunos",
+      "price": 125,
+      "description": "Huevos al gusto, pan artesanal tostado, frijoles, fruta y café americano.",
+      "tag": null
+    },
+    {
+      "id": 14,
+      "name": "Avocado Toast",
+      "category": "Desayunos",
+      "price": 98,
+      "description": "Pan masa madre, aguacate, huevo pochado, semillas y chile de árbol.",
+      "tag": "Popular"
+    },
+    {
+      "id": 15,
+      "name": "Granola Bowl",
+      "category": "Desayunos",
+      "price": 88,
+      "description": "Granola casera, yogurt griego, miel de abeja y fruta de temporada.",
+      "tag": null
+    },
+    {
+      "id": 16,
+      "name": "Hot Cakes de Maíz",
+      "category": "Desayunos",
+      "price": 105,
+      "description": "Masa de maíz azul, miel de maple, mantequilla y fruta. Receta propia.",
+      "tag": "Firma"
+    }
+  ]
+}

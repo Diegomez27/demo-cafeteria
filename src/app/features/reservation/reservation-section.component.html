@@ -1,0 +1,137 @@
+<section class="reservation" id="reservar">
+  <div class="container reservation__inner">
+    <div class="reservation__info" appReveal>
+      <p class="about__label">¿Vienes a visitarnos?</p>
+      <h2 class="section-title">Reserva tu<br>mesa.</h2>
+      <p class="reservation__desc">
+        Asegura tu lugar y llega sin esperar. Para grupos de más de 8 personas
+        contáctanos directamente por teléfono.
+      </p>
+      <ul class="reservation__details">
+        <li>
+          <span class="res-icon">📍</span>
+          Av. Ámsterdam 123, Col. Condesa, CDMX
+        </li>
+        <li>
+          <span class="res-icon">📞</span>
+          55 1234 5678
+        </li>
+        <li>
+          <span class="res-icon">🕗</span>
+          Lun–Vie 8:00–21:00 · Sáb–Dom 9:00–22:00
+        </li>
+      </ul>
+    </div>
+
+    <div class="reservation__form-wrap" appReveal>
+      @if (!submitted()) {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="res-form" novalidate>
+          <div class="res-form__row">
+            <div class="res-form__field">
+              <label for="nombre">Nombre completo</label>
+              <input
+                id="nombre"
+                type="text"
+                formControlName="nombre"
+                placeholder="Tu nombre"
+                [class.error]="isInvalid('nombre')"
+              >
+              @if (isInvalid('nombre')) {
+                <span class="res-form__error">Nombre requerido (mínimo 2 caracteres)</span>
+              }
+            </div>
+          </div>
+
+          <div class="res-form__row res-form__row--2">
+            <div class="res-form__field">
+              <label for="email">Correo electrónico</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="correo@ejemplo.com"
+                [class.error]="isInvalid('email')"
+              >
+              @if (isInvalid('email')) {
+                <span class="res-form__error">Correo inválido</span>
+              }
+            </div>
+            <div class="res-form__field">
+              <label for="telefono">Teléfono (10 dígitos)</label>
+              <input
+                id="telefono"
+                type="tel"
+                formControlName="telefono"
+                placeholder="5512345678"
+                [class.error]="isInvalid('telefono')"
+              >
+              @if (isInvalid('telefono')) {
+                <span class="res-form__error">Teléfono de 10 dígitos</span>
+              }
+            </div>
+          </div>
+
+          <div class="res-form__row res-form__row--3">
+            <div class="res-form__field">
+              <label for="fecha">Fecha</label>
+              <input
+                id="fecha"
+                type="date"
+                formControlName="fecha"
+                [min]="minDate"
+                [class.error]="isInvalid('fecha')"
+              >
+              @if (isInvalid('fecha')) {
+                <span class="res-form__error">Selecciona una fecha</span>
+              }
+            </div>
+            <div class="res-form__field">
+              <label for="hora">Hora</label>
+              <select id="hora" formControlName="hora" [class.error]="isInvalid('hora')">
+                <option value="" disabled>Seleccionar</option>
+                @for (h of horas; track h) {
+                  <option [value]="h">{{ h }}</option>
+                }
+              </select>
+              @if (isInvalid('hora')) {
+                <span class="res-form__error">Selecciona un horario</span>
+              }
+            </div>
+            <div class="res-form__field">
+              <label for="personas">Personas</label>
+              <select id="personas" formControlName="personas">
+                @for (n of [1,2,3,4,5,6,7,8]; track n) {
+                  <option [value]="n">{{ n }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="res-form__field">
+            <label for="mensaje">Notas especiales (opcional)</label>
+            <textarea
+              id="mensaje"
+              formControlName="mensaje"
+              rows="3"
+              placeholder="Alergias, ocasión especial, preferencia de mesa..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary res-form__submit">
+            Confirmar Reservación
+          </button>
+        </form>
+      } @else {
+        <div class="res-success">
+          <div class="res-success__icon">✓</div>
+          <h3 class="res-success__title">¡Reservación recibida!</h3>
+          <p class="res-success__text">
+            Te esperamos con gusto. Recibirás una confirmación en tu correo
+            en los próximos minutos.
+          </p>
+          <button class="btn btn--outline" (click)="reset()">Hacer otra reservación</button>
+        </div>
+      }
+    </div>
+  </div>
+</section>

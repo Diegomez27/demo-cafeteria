@@ -2,16 +2,15 @@ import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';
 
 @Directive({
   selector: '[appReveal]',
-  standalone: true,
+  standalone: true
 })
 export class RevealDirective implements OnInit, OnDestroy {
   private observer!: IntersectionObserver;
 
-  constructor(private el: ElementRef<HTMLElement>) {}
+  constructor(private el: ElementRef) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.el.nativeElement.classList.add('reveal');
-
     this.observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,13 +18,12 @@ export class RevealDirective implements OnInit, OnDestroy {
           this.observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
-
     this.observer.observe(this.el.nativeElement);
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.observer?.disconnect();
   }
 }

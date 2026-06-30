@@ -1,27 +1,26 @@
 import { Component, signal, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss',
+  styleUrl: './nav.component.scss'
 })
 export class NavComponent {
-  menuOpen = signal(false);
   scrolled = signal(false);
+  menuOpen = signal(false);
 
-  toggleMenu(): void {
+  @HostListener('window:scroll')
+  onScroll() {
+    this.scrolled.set(window.scrollY > 48);
+  }
+
+  toggleMenu() {
     this.menuOpen.update(v => !v);
   }
 
-  closeMenu(): void {
+  closeMenu() {
     this.menuOpen.set(false);
-  }
-
-  @HostListener('window:scroll')
-  onScroll(): void {
-    this.scrolled.set(window.scrollY > 40);
   }
 }

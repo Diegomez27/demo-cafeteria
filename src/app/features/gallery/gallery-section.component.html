@@ -1,0 +1,25 @@
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-header section-header--center" appReveal>
+      <h2 class="section-title">Momentos en Café Raíces</h2>
+      <p class="section-subtitle">Un lugar para quedarse un rato más.</p>
+    </div>
+  </div>
+
+  <div class="gallery__grid" appReveal>
+    @for (img of images; track img.url) {
+      <div class="gallery__item" [class]="'gallery__item--' + img.size">
+        <img
+          [src]="img.url"
+          [alt]="img.alt"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+        <div class="gallery__overlay">
+          <span>{{ img.alt }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</section>

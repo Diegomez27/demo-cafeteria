@@ -3,7 +3,9 @@ import { NavComponent } from './features/nav/nav.component';
 import { HeroComponent } from './features/hero/hero.component';
 import { MenuSectionComponent } from './features/menu/menu-section.component';
 import { AboutSectionComponent } from './features/about/about-section.component';
-import { LocationSectionComponent } from './features/location/location-section.component';
+import { GallerySectionComponent } from './features/gallery/gallery-section.component';
+import { ReservationSectionComponent } from './features/reservation/reservation-section.component';
+import { FooterComponent } from './features/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -13,19 +15,11 @@ import { LocationSectionComponent } from './features/location/location-section.c
     HeroComponent,
     MenuSectionComponent,
     AboutSectionComponent,
-    LocationSectionComponent,
+    GallerySectionComponent,
+    ReservationSectionComponent,
+    FooterComponent
   ],
-  template: `
-    <app-nav />
-    <main>
-      <app-hero />
-      <app-menu-section />
-      <app-about-section />
-      <app-location-section />
-    </main>
-  `,
-  styles: [`
-    main { display: block; }
-  `],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
 })
 export class App {}

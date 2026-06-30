@@ -1,27 +1,24 @@
-<header class="nav" [class.scrolled]="scrolled()">
-  <div class="nav__inner container">
-    <a href="#" class="nav__logo" (click)="closeMenu()">
-      <span class="nav__logo-mark">M</span>
-      <span class="nav__logo-name">Matina</span>
-    </a>
-
-    <nav class="nav__links" [class.open]="menuOpen()" aria-label="Navegación principal">
-      <a href="#menu" (click)="closeMenu()">Menú</a>
-      <a href="#about" (click)="closeMenu()">Nosotros</a>
-      <a href="#location" (click)="closeMenu()">Ubicación</a>
-      <a href="#location" class="nav__cta" (click)="closeMenu()">Reservar</a>
-    </nav>
+<nav [class.scrolled]="scrolled()">
+  <div class="container nav__inner">
+    <a href="#inicio" class="nav__logo">Café Raíces</a>
 
     <button
-      class="nav__burger"
-      [class.open]="menuOpen()"
+      class="nav__hamburger"
       (click)="toggleMenu()"
+      [class.open]="menuOpen()"
       [attr.aria-expanded]="menuOpen()"
-      aria-label="Menú"
+      aria-label="Abrir menú"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
+
+    <ul class="nav__links" [class.open]="menuOpen()">
+      <li><a href="#menu" (click)="closeMenu()">Menú</a></li>
+      <li><a href="#nosotros" (click)="closeMenu()">Nosotros</a></li>
+      <li><a href="#galeria" (click)="closeMenu()">Galería</a></li>
+      <li><a href="#reservar" (click)="closeMenu()" class="nav__cta">Reservar</a></li>
+    </ul>
   </div>
-</header>
+</nav>

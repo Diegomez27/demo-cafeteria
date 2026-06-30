@@ -1,57 +1,43 @@
-<section class="about" id="about">
+<section class="about" id="nosotros">
   <div class="container about__grid">
-    <div class="about__images" appReveal>
-      <div class="about__img-main">
-        <img
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80&auto=format&fit=crop"
-          alt="Interior de Matina Café"
-          loading="lazy"
-        />
-      </div>
-      <div class="about__img-secondary">
-        <img
-          src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=400&q=80&auto=format&fit=crop"
-          alt="Latte art en Matina Café"
-          loading="lazy"
-        />
-      </div>
-      <div class="about__badge">
-        <span class="about__badge-num">2019</span>
-        <span class="about__badge-text">Desde</span>
+    <div class="about__image-wrap" appReveal>
+      <img
+        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+        alt="Interior de Café Raíces"
+        class="about__image"
+        loading="lazy"
+        width="640"
+        height="480"
+      >
+      <div class="about__image-badge">
+        <span class="about__badge-number">12</span>
+        <span class="about__badge-text">años<br>de café</span>
       </div>
     </div>
 
-    <div class="about__text">
-      <span class="section-label" appReveal>Nuestra historia</span>
-      <h2 class="about__title" appReveal>
-        Empezamos con<br>una sola idea:
-        <em>el buen café merece tiempo.</em>
-      </h2>
-      <p class="about__body" appReveal>
-        Matina nació en 2019 de la mano de Laura y Rafael, dos apasionados del café
-        de especialidad que decidieron convertir un local pequeño en el rincón favorito
-        del barrio. Viajamos a los mejores orígenes, trabajamos directamente con
-        productores y tostamos en pequeños lotes para garantizar la taza perfecta.
+    <div class="about__content" appReveal>
+      <p class="about__label">Nuestra Historia</p>
+      <h2 class="section-title">Nacimos del amor<br>al buen café.</h2>
+      <p class="about__text">
+        Café Raíces nació en 2013 cuando Mariana y Tomás decidieron que
+        la Ciudad de México merecía un lugar donde cada taza fuera una
+        experiencia, no solo una rutina. Empezamos con tres mesas,
+        una cafetera italiana y la receta de café de olla de la abuela.
       </p>
-      <p class="about__body reveal-delay-1" appReveal>
-        Hoy Matina es más que un café: es donde los vecinos se encuentran,
-        donde los trabajadores remotos encuentran su oficina ideal, y donde cada
-        mañana huele a algo bueno.
+      <p class="about__text">
+        Hoy somos un equipo de doce personas que compartimos la misma
+        obsesión: que cada visita a Café Raíces valga el tiempo que
+        te tomaste para venir.
       </p>
-      <div class="about__stats" appReveal>
-        <div class="about__stat">
-          <span class="about__stat-num">12+</span>
-          <span class="about__stat-label">Orígenes de café</span>
-        </div>
-        <div class="about__stat">
-          <span class="about__stat-num">6</span>
-          <span class="about__stat-label">Años sirviendo</span>
-        </div>
-        <div class="about__stat">
-          <span class="about__stat-num">∞</span>
-          <span class="about__stat-label">Buenos días</span>
-        </div>
-      </div>
+
+      <ul class="about__stats">
+        @for (stat of stats; track stat.label) {
+          <li class="about__stat">
+            <span class="about__stat-value">{{ stat.value }}</span>
+            <span class="about__stat-label">{{ stat.label }}</span>
+          </li>
+        }
+      </ul>
     </div>
   </div>
 </section>
