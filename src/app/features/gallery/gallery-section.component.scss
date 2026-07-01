@@ -1,6 +1,7 @@
 .gallery {
-  padding: 5rem 0 0;
+  padding: 5rem 0 4rem;
   background: var(--color-surface);
+  overflow: hidden;
 
   .section-title {
     color: var(--color-ink);
@@ -11,70 +12,73 @@
   }
 }
 
-.gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
-  margin-top: 2rem;
+/* Carrete horizontal de polaroids — compacto, con scroll-snap */
+.gallery__strip {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-top: 1rem;
+  /* espacio vertical para que las rotaciones y sombras no se recorten */
+  padding: 1.5rem max(var(--container-pad), calc((100vw - var(--container-max)) / 2)) 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
 
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(4, 1fr);
+.gallery__slot {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.gallery__polaroid {
+  background: var(--color-bg);
+  padding: 0.75rem 0.75rem 0.625rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  transform: rotate(-1.75deg);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  .gallery__slot:nth-child(even) & {
+    transform: rotate(1.75deg);
+  }
+
+  &:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: var(--shadow-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover { transform: rotate(-1.75deg); }
+
+    .gallery__slot:nth-child(even) &:hover { transform: rotate(1.75deg); }
+  }
+
+  figcaption {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    padding-top: 0.5rem;
+    text-align: center;
   }
 }
 
-.gallery__item {
-  position: relative;
+.gallery__photo {
+  width: clamp(200px, 55vw, 260px);
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  aspect-ratio: 1;
-
-  @media (min-width: 600px) {
-    &--large {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    &--wide {
-      grid-column: span 2;
-      aspect-ratio: 2 / 1;
-    }
-  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.07);
   }
 }
 
-.gallery__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0);
-  display: flex;
-  align-items: flex-end;
-  padding: 1rem;
-  transition: background 0.35s ease;
-
-  span {
-    color: var(--color-ink);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all 0.35s ease;
-  }
-
-  .gallery__item:hover & {
-    background: rgba(0, 0, 0, 0.5);
-
-    span {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.gallery__hint {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
 }

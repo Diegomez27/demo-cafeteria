@@ -1,23 +1,28 @@
 .footer {
   background: var(--color-surface);
   color: var(--color-ink);
-  padding-top: 4rem;
+  padding-top: 2.75rem;
   border-top: 1px solid var(--color-border);
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  padding-bottom: 3rem;
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.25rem;
+  padding-bottom: 2.25rem;
 
   @media (min-width: 960px) {
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 4rem;
+  }
+}
+
+/* La marca ocupa toda la fila en móvil; en desktop vuelve a su columna */
+.footer__brand {
+  grid-column: 1 / -1;
+
+  @media (min-width: 960px) {
+    grid-column: auto;
   }
 }
 
@@ -43,11 +48,17 @@
   gap: 1rem;
 
   a {
+    display: inline-flex;
     color: var(--color-ink-muted);
-    transition: color var(--transition);
+    transition: color var(--transition), transform 0.25s ease;
 
     &:hover {
       color: var(--color-terracotta);
+      transform: translateY(-3px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &:hover { transform: none; }
     }
   }
 }
@@ -73,6 +84,17 @@
     font-size: 0.875rem;
     color: var(--color-ink-muted);
     gap: 1rem;
+
+    /* En columnas angostas el día y la hora se apilan */
+    @media (max-width: 639px) {
+      flex-direction: column;
+      gap: 0.125rem;
+
+      span:first-child {
+        color: var(--color-ink);
+        font-weight: 500;
+      }
+    }
   }
 }
 

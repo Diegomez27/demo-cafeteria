@@ -6,20 +6,24 @@
     </div>
   </div>
 
-  <div class="gallery__grid" #galleryGrid>
+  <div class="gallery__strip" #galleryGrid>
     @for (img of images; track img.url) {
-      <div class="gallery__item" #galleryItem [class]="'gallery__item--' + img.size">
-        <img
-          [src]="img.url"
-          [alt]="img.alt"
-          loading="lazy"
-          width="600"
-          height="600"
-        >
-        <div class="gallery__overlay">
-          <span>{{ img.alt }}</span>
-        </div>
+      <div class="gallery__slot" #galleryItem>
+        <figure class="gallery__polaroid">
+          <div class="gallery__photo">
+            <img
+              [src]="img.url"
+              [alt]="img.alt"
+              loading="lazy"
+              width="600"
+              height="750"
+            >
+          </div>
+          <figcaption>{{ img.alt }}</figcaption>
+        </figure>
       </div>
     }
   </div>
+
+  <p class="gallery__hint" aria-hidden="true">Desliza para ver más →</p>
 </section>

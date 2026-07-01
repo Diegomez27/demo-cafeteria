@@ -1,27 +1,37 @@
 <section class="reservation" id="reservar">
-  <div class="container reservation__inner">
-    <div class="reservation__info" appReveal>
+  <div class="container">
+    <header class="reservation__header" appReveal>
       <p class="about__label">¿Vienes a visitarnos?</p>
       <h2 class="section-title">Reserva tu<br>mesa.</h2>
       <p class="reservation__desc">
         Asegura tu lugar y llega sin esperar. Para grupos de más de 8 personas
         contáctanos directamente por teléfono.
       </p>
-      <ul class="reservation__details">
-        <li>
-          <span class="res-icon">📍</span>
-          Av. Ámsterdam 123, Col. Condesa, CDMX
-        </li>
-        <li>
-          <span class="res-icon">📞</span>
+      <p class="reservation__meta">
+        <span class="reservation__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+          Av. Ámsterdam 123, Condesa
+        </span>
+        <span class="reservation__meta-sep">·</span>
+        <span class="reservation__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
           55 1234 5678
-        </li>
-        <li>
-          <span class="res-icon">🕗</span>
+        </span>
+        <span class="reservation__meta-sep">·</span>
+        <span class="reservation__meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3.5 2"/>
+          </svg>
           Lun–Vie 8:00–21:00 · Sáb–Dom 9:00–22:00
-        </li>
-      </ul>
-    </div>
+        </span>
+      </p>
+    </header>
 
     <div class="reservation__form-wrap" appReveal>
       @if (!submitted()) {
@@ -112,7 +122,7 @@
             <textarea
               id="mensaje"
               formControlName="mensaje"
-              rows="3"
+              rows="2"
               placeholder="Alergias, ocasión especial, preferencia de mesa..."
             ></textarea>
           </div>
@@ -123,7 +133,11 @@
         </form>
       } @else {
         <div class="res-success">
-          <div class="res-success__icon">✓</div>
+          <div class="res-success__blob">
+            <svg class="res-success__check" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M8 17l6 6 11-14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3 class="res-success__title">¡Reservación recibida!</h3>
           <p class="res-success__text">
             Te esperamos con gusto. Recibirás una confirmación en tu correo

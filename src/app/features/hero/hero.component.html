@@ -1,5 +1,33 @@
 <section class="hero" id="inicio">
-  <div class="hero__text">
+  <div class="hero__image">
+    <img
+      src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=85"
+      alt="Taza de café de especialidad con latte art sobre mesa de madera"
+      loading="eager"
+    />
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="hero__stamp" aria-hidden="true">
+    <svg viewBox="0 0 120 120">
+      <defs>
+        <path id="stamp-arc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+      </defs>
+      <g class="hero__stamp-rotor">
+        <text class="hero__stamp-text">
+          <textPath href="#stamp-arc">Café de especialidad · Roma Norte · Desde 2013 ·</textPath>
+        </text>
+      </g>
+      <g class="hero__stamp-cup" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 56h20v8a10 10 0 0 1-20 0z" />
+        <path d="M68 58h3a4 4 0 0 1 0 8h-3" />
+        <path d="M54 50c0-2 2-2.5 2-5" />
+        <path d="M62 50c0-2 2-2.5 2-5" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero__content">
     <h1 class="hero__title">
       El café<br>
       <em>que vale</em><br>
@@ -12,21 +40,13 @@
     </p>
 
     <div class="hero__actions">
-      <a href="#menu" class="btn-primary">Ver menú</a>
-      <a href="#reservar" class="btn-ghost">Reservar mesa →</a>
+      <a href="#menu" class="btn-stamp">Ver menú</a>
+      <a href="#reservar" class="btn-ghost-light">Reservar mesa →</a>
     </div>
 
     <div class="hero__badge">
       <span class="hero__dot"></span>
       Abierto hoy · 8:00 — 21:00
     </div>
-  </div>
-
-  <div class="hero__image">
-    <img
-      src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=85"
-      alt="Taza de café de especialidad con latte art sobre mesa de madera"
-      loading="eager"
-    />
   </div>
 </section>

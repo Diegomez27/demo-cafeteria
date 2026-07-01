@@ -4,6 +4,7 @@ import {
   signal,
   computed,
   effect,
+  viewChild,
   viewChildren,
   OnDestroy
 } from '@angular/core';
@@ -29,24 +30,24 @@ interface MenuItem {
   styleUrl: './menu-section.component.scss'
 })
 export class MenuSectionComponent implements OnDestroy {
-  categories = menuData.categories;
-  activeCategory = signal('Todos');
+  // Sin "Todos": cada categoría es una hoja de la carta.
+  categories = menuData.categories.filter(cat => cat !== 'Todos');
+  activeCategory = signal(this.categories[0]);
 
+  private page = viewChild<ElementRef<HTMLElement>>('menuPage');
   private menuItems = viewChildren<ElementRef<HTMLElement>>('menuItem');
+  private pageInAnim?: JSAnimation;
+  private pageOutAnim?: JSAnimation;
   private enterAnim?: JSAnimation;
-  private exitAnim?: JSAnimation;
   private firstRender = true;
 
-  filteredItems = computed<MenuItem[]>(() => {
-    const cat = this.activeCategory();
-    return cat === 'Todos'
-      ? menuData.items
-      : menuData.items.filter(item => item.category === cat);
-  });
+  filteredItems = computed<MenuItem[]>(() =>
+    menuData.items.filter(item => item.category === this.activeCategory())
+  );
 
   constructor() {
-    // Cuando el swap de categoría ya renderizó los nuevos items, los hace entrar
-    // escalonados. viewChildren se actualiza después del render, no antes.
+    // Cuando el swap de categoría ya renderizó la hoja nueva, ésta "cae" girando
+    // desde el lomo izquierdo y sus platillos entran escalonados.
     effect(() => {
       const els = this.menuItems().map(ref => ref.nativeElement);
       if (this.firstRender) {
@@ -55,12 +56,22 @@ export class MenuSectionComponent implements OnDestroy {
       }
       if (prefersReducedMotion() || !els.length) return;
 
+      const pageEl = this.page()?.nativeElement;
+      this.pageInAnim?.revert();
       this.enterAnim?.revert();
+
+      if (pageEl) {
+        this.pageInAnim = animate(pageEl, {
+          rotateY: [-65, 0],
+          duration: 480,
+          ease: 'outCubic'
+        });
+      }
       this.enterAnim = animate(els, {
         opacity: [0, 1],
-        translateY: [12, 0],
-        duration: 420,
-        delay: stagger(50),
+        translateY: [10, 0],
+        duration: 380,
+        delay: stagger(45, { start: 140 }),
         ease: 'outExpo'
       });
     });
@@ -74,20 +85,25 @@ export class MenuSectionComponent implements OnDestroy {
       return;
     }
 
-    // Salida corta de los items actuales; al terminar, recién se hace el swap.
-    const current = this.menuItems().map(ref => ref.nativeElement);
-    this.exitAnim?.revert();
-    this.exitAnim = animate(current, {
-      opacity: [1, 0],
-      translateY: [0, -6],
-      duration: 150,
-      ease: 'outQuad',
+    // La hoja actual se levanta girando sobre el lomo; al terminar se hace el swap.
+    const pageEl = this.page()?.nativeElement;
+    if (!pageEl) {
+      this.activeCategory.set(cat);
+      return;
+    }
+
+    this.pageOutAnim?.revert();
+    this.pageOutAnim = animate(pageEl, {
+      rotateY: [0, -65],
+      duration: 240,
+      ease: 'inCubic',
       onComplete: () => this.activeCategory.set(cat)
     });
   }
 
   ngOnDestroy(): void {
+    this.pageInAnim?.revert();
+    this.pageOutAnim?.revert();
     this.enterAnim?.revert();
-    this.exitAnim?.revert();
   }
 }

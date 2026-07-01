@@ -8,48 +8,101 @@
   }
 }
 
-.menu-filters {
-  display: flex;
-  gap: 0.625rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 3rem;
+.menu-carta {
+  max-width: 880px;
+  margin-inline: auto;
 }
 
-.menu-filter {
-  padding: 0.5rem 1.25rem;
-  border-radius: 100px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-ink-muted);
-  background: transparent;
+/* Pestañas tipo folder, pegadas al borde superior de la carta.
+   En pantallas angostas la fila no se rompe: se desliza horizontal. */
+.menu-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 0 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.menu-tab {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.55rem 1.15rem;
+  background: oklch(88.5% 0.024 60);
   border: 1px solid var(--color-border);
-  transition: border-color var(--transition), color var(--transition),
-    background var(--transition);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+  transition: background var(--transition), color var(--transition),
+    padding 0.25s ease;
   cursor: pointer;
 
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
   &:hover {
-    border-color: var(--color-olive);
+    background: oklch(90.5% 0.022 60);
     color: var(--color-ink);
   }
 
   &.active {
-    background: var(--color-olive);
-    border-color: var(--color-olive);
-    color: var(--color-bg);
+    background: var(--color-bg);
+    color: var(--color-terracotta);
+    padding-bottom: 0.7rem;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: background var(--transition), color var(--transition);
+  }
+}
+
+/* La carta: hoja de papel sobre el mostrador kraft */
+.menu-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 15px 255px 15px 225px / 225px 15px 15px 15px;
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+.menu-page {
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.menu-card__ornament {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--color-ink-muted);
+  text-align: center;
+  margin-bottom: 1.75rem;
 }
 
 .menu-list {
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 3.5rem;
-  max-width: 760px;
-  margin-inline: auto;
+  column-gap: 3rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 700px) {
     grid-template-columns: repeat(2, 1fr);
-    max-width: none;
   }
 }
 

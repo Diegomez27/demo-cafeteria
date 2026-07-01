@@ -34,7 +34,8 @@
   background: var(--color-terracotta);
   color: var(--color-bg);
   padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-organic-3);
+  box-shadow: var(--shadow-card);
   text-align: center;
 
   @media (max-width: 899px) {

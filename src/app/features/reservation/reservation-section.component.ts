@@ -1,6 +1,23 @@
-import { Component, signal, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  signal,
+  inject,
+  afterNextRender,
+  afterRenderEffect,
+  OnDestroy
+} from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import {
+  animate,
+  stagger,
+  onScroll,
+  svg,
+  type JSAnimation,
+  type ScrollObserver
+} from 'animejs';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { prefersReducedMotion } from '../../shared/utils/motion';
 
 @Component({
   selector: 'app-reservation-section',
@@ -9,10 +26,25 @@ import { RevealDirective } from '../../shared/directives/reveal.directive';
   templateUrl: './reservation-section.component.html',
   styleUrl: './reservation-section.component.scss'
 })
-export class ReservationSectionComponent {
+export class ReservationSectionComponent implements OnDestroy {
   private fb = inject(FormBuilder);
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  private fieldsAnim?: JSAnimation;
+  private formObserver?: ScrollObserver;
+  private blobAnim?: JSAnimation;
+  private checkAnim?: JSAnimation;
 
   submitted = signal(false);
+
+  constructor() {
+    afterNextRender(() => this.animateFormEntrance());
+
+    // Cuando el estado de éxito ya está en el DOM, dibuja el check y hace pop al blob.
+    afterRenderEffect(() => {
+      if (this.submitted()) this.animateSuccess();
+    });
+  }
 
   form = this.fb.nonNullable.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -48,5 +80,54 @@ export class ReservationSectionComponent {
   reset() {
     this.form.reset({ personas: '2' });
     this.submitted.set(false);
+  }
+
+  private animateFormEntrance(): void {
+    if (prefersReducedMotion()) return;
+
+    const wrap = this.host.nativeElement.querySelector<HTMLElement>('.reservation__form-wrap');
+    const fields = this.host.nativeElement.querySelectorAll<HTMLElement>(
+      '.res-form__field, .res-form__submit'
+    );
+    if (!wrap || !fields.length) return;
+
+    // Los campos entran escalonados cuando la tarjeta llega al viewport.
+    this.formObserver = onScroll({ target: wrap, enter: 'bottom-=80 top', repeat: false });
+    this.fieldsAnim = animate(fields, {
+      opacity: [0, 1],
+      translateY: [14, 0],
+      duration: 550,
+      delay: stagger(60),
+      ease: 'outExpo',
+      autoplay: this.formObserver
+    });
+  }
+
+  private animateSuccess(): void {
+    if (prefersReducedMotion()) return;
+
+    const blob = this.host.nativeElement.querySelector<HTMLElement>('.res-success__blob');
+    const check = this.host.nativeElement.querySelector<SVGPathElement>('.res-success__check path');
+    if (!blob || !check) return;
+
+    this.blobAnim = animate(blob, {
+      scale: [0.5, 1],
+      opacity: [0, 1],
+      duration: 500,
+      ease: 'outBack'
+    });
+    this.checkAnim = animate(svg.createDrawable(check), {
+      draw: ['0 0', '0 1'],
+      duration: 600,
+      delay: 200,
+      ease: 'outQuart'
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.fieldsAnim?.revert();
+    this.formObserver?.revert();
+    this.blobAnim?.revert();
+    this.checkAnim?.revert();
   }
 }

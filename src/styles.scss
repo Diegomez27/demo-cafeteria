@@ -30,6 +30,16 @@
   --radius-sm: 2px;
   --radius-md: 4px;
 
+  /* Organic asymmetric radii — handcrafted / artisanal feel */
+  --radius-organic-1: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-organic-2: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  --radius-organic-3: 24px 4px 20px 4px / 4px 20px 4px 24px;
+  --radius-organic-3-flip: 4px 24px 4px 20px / 24px 4px 20px 4px;
+
+  /* Warm diffuse shadows — never hard/dark, never bluish */
+  --shadow-soft: 0 20px 45px -20px oklch(27% 0.03 50 / 0.28);
+  --shadow-card: 0 8px 30px -8px oklch(27% 0.03 50 / 0.18);
+
   --transition: 0.3s ease;
 }
 
@@ -96,6 +106,20 @@ button {
   letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 0.75rem;
+
+  /* Trazo de pincel bajo el título — firma artesanal de la casa */
+  &::after {
+    content: '';
+    display: block;
+    width: clamp(90px, 12vw, 130px);
+    height: 9px;
+    margin-top: 0.625rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8 C40 2 78 11 116 5 C150 1 178 8 197 4' fill='none' stroke='%239d4a2e' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  }
+}
+
+.section-header--center .section-title::after {
+  margin-inline: auto;
 }
 
 .section-subtitle {
@@ -110,11 +134,21 @@ button {
   align-items: center;
   justify-content: center;
   padding: 0.875rem 2rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-organic-3);
   font-weight: 600;
   font-size: 0.9375rem;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    border-radius 0.4s ease,
+    transform 0.25s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
+
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
 
   &--primary {
     background: var(--color-terracotta);
@@ -123,21 +157,38 @@ button {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    box-shadow:
+      0 8px 20px -8px oklch(48% 0.148 42 / 0.55),
+      inset 0 1px 0 oklch(100% 0 0 / 0.15);
 
     &:hover {
       background: var(--color-terracotta-deep);
+      transform: translateY(-2px) rotate(-0.5deg);
+      border-radius: var(--radius-organic-3-flip);
+      box-shadow:
+        0 14px 30px -10px oklch(48% 0.148 42 / 0.6),
+        inset 0 1px 0 oklch(100% 0 0 / 0.15);
     }
   }
 
   &--outline {
     background: transparent;
     color: var(--color-ink-muted);
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
 
     &:hover {
       border-color: var(--color-terracotta);
       color: var(--color-terracotta);
+      transform: translateY(-2px);
+      border-radius: var(--radius-organic-3-flip);
+      box-shadow: var(--shadow-card);
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+
+    &:hover, &:active { transform: none; }
   }
 }
 
