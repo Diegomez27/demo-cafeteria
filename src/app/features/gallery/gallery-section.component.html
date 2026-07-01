@@ -6,9 +6,9 @@
     </div>
   </div>
 
-  <div class="gallery__grid" appReveal>
+  <div class="gallery__grid" #galleryGrid>
     @for (img of images; track img.url) {
-      <div class="gallery__item" [class]="'gallery__item--' + img.size">
+      <div class="gallery__item" #galleryItem [class]="'gallery__item--' + img.size">
         <img
           [src]="img.url"
           [alt]="img.alt"

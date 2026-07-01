@@ -1,15 +1,24 @@
 :root {
-  --color-bg:        oklch(13% 0.025 30);   /* espresso casi-negro */
-  --color-surface:   oklch(18% 0.02 30);    /* superficie de cards */
-  --color-amber:     oklch(74% 0.13 68);    /* acento ámbar dorado */
-  --color-amber-dim: oklch(62% 0.11 68);    /* amber más oscuro para hover */
-  --color-ink:       oklch(95% 0.015 80);   /* texto principal */
-  --color-ink-muted: oklch(70% 0.01 80);    /* texto secundario */
-  --color-border:    oklch(25% 0.015 30);   /* bordes sutiles */
+  /* Superficies cálidas y CLARAS — mostrador de café de especialidad de día,
+     papel kraft, madera clara. El tinte va hacia la propia terracota, no un
+     "warm" genérico. */
+  --color-bg:        oklch(96.5% 0.014 62);  /* crema hueso, base del sitio */
+  --color-surface:   oklch(92.5% 0.022 60);  /* kraft/arena para secciones alternas */
 
-  /* tonos cálidos auxiliares para hovers puntuales */
-  --color-brown-900: oklch(13% 0.025 30);
-  --color-brown-700: oklch(30% 0.04 40);
+  /* Acento primario — terracota / barro cocido (NO ámbar/dorado = barbería).
+     L 48% pasa AA (4.5:1) como texto pequeño sobre la crema y como texto crema encima. */
+  --color-terracotta:      oklch(48% 0.148 42);
+  --color-terracotta-deep: oklch(39% 0.12 40);   /* hover / drench profundo */
+
+  /* Acento secundario — verde oliva, para variar de la terracota */
+  --color-olive:      oklch(47% 0.082 128);
+  --color-olive-deep: oklch(39% 0.07 128);
+
+  /* Tinta sobre fondo claro — espresso cálido, no negro puro */
+  --color-ink:       oklch(27% 0.03 50);   /* texto principal · ~9:1 AAA */
+  --color-ink-muted: oklch(45% 0.028 52);  /* texto secundario · ~5:1 AA  */
+
+  --color-border:    oklch(84% 0.02 58);   /* bordes cálidos sutiles */
 
   --font-display: 'Big Shoulders Display', system-ui, sans-serif;
   --font-serif: 'Young Serif', Georgia, serif;
@@ -108,7 +117,7 @@ button {
   cursor: pointer;
 
   &--primary {
-    background: var(--color-amber);
+    background: var(--color-terracotta);
     color: var(--color-bg);
     font-family: var(--font-display);
     font-weight: 700;
@@ -116,7 +125,7 @@ button {
     letter-spacing: 0.04em;
 
     &:hover {
-      background: var(--color-amber-dim);
+      background: var(--color-terracotta-deep);
     }
   }
 
@@ -126,8 +135,8 @@ button {
     border: 1px solid var(--color-border);
 
     &:hover {
-      border-color: var(--color-amber);
-      color: var(--color-amber);
+      border-color: var(--color-terracotta);
+      color: var(--color-terracotta);
     }
   }
 }

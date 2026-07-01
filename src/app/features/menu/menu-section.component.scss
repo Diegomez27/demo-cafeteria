@@ -18,23 +18,25 @@
 
 .menu-filter {
   padding: 0.5rem 1.25rem;
-  border-radius: 2px;
+  border-radius: 100px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-ink-muted);
   background: transparent;
   border: 1px solid var(--color-border);
-  transition: border-color var(--transition), color var(--transition);
+  transition: border-color var(--transition), color var(--transition),
+    background var(--transition);
   cursor: pointer;
 
   &:hover {
-    border-color: var(--color-ink-muted);
+    border-color: var(--color-olive);
     color: var(--color-ink);
   }
 
   &.active {
-    border-color: var(--color-amber);
-    color: var(--color-amber);
+    background: var(--color-olive);
+    border-color: var(--color-olive);
+    color: var(--color-bg);
   }
 }
 
@@ -81,11 +83,11 @@
   background: var(--color-ink-muted);
 
   &--popular {
-    background: var(--color-amber);
+    background: var(--color-terracotta);
   }
 
   &--firma {
-    background: var(--color-amber-dim);
+    background: var(--color-olive);
   }
 }
 
@@ -100,7 +102,7 @@
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 900;
-  color: var(--color-amber);
+  color: var(--color-terracotta);
   white-space: nowrap;
 }
 

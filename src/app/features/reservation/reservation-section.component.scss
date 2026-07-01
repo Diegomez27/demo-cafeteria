@@ -24,7 +24,7 @@
 .about__label {
   font-family: var(--font-serif);
   font-size: 1rem;
-  color: var(--color-amber);
+  color: var(--color-terracotta);
   margin-bottom: 0.75rem;
 }
 
@@ -110,8 +110,8 @@
     &::placeholder { color: var(--color-ink-muted); }
 
     &:focus {
-      border-color: var(--color-amber);
-      box-shadow: 0 0 0 3px rgba(212, 160, 90, 0.18);
+      border-color: var(--color-terracotta);
+      box-shadow: 0 0 0 3px rgba(157, 74, 46, 0.18);
     }
 
     &.error {
@@ -149,8 +149,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(212, 160, 90, 0.15);
-  color: var(--color-amber);
+  background: rgba(157, 74, 46, 0.14);
+  color: var(--color-terracotta);
   font-size: 1.75rem;
   display: flex;
   align-items: center;

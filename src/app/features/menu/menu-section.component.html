@@ -19,7 +19,7 @@
 
     <div class="menu-list" appReveal>
       @for (item of filteredItems(); track item.id) {
-        <article class="menu-item">
+        <article class="menu-item" #menuItem>
           <div class="menu-item__head">
             <h3 class="menu-item__name">
               @if (item.tag) {
